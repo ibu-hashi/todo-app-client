@@ -2,11 +2,12 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
+    "jest/globals": true,
   },
   extends: [
     'plugin:react/recommended',
     'airbnb',
-    'prettier'
+    'prettier',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -21,6 +22,7 @@ module.exports = {
   plugins: [
     'react',
     '@typescript-eslint',
+    "jest"
   ],
   rules: {
     'import/extensions': [
@@ -40,6 +42,13 @@ module.exports = {
     ],
     'react/react-in-jsx-scope': 'off',
     'import/prefer-default-export': 'off',
+    'import/no-extraneous-dependencies': 'off',
+    'react/function-component-definition': [
+        2,
+      {
+        namedComponents: 'arrow-function',
+      },
+    ],
   },
   settings: {
     'import/resolver': {
