@@ -33,10 +33,6 @@ const LinkHeader = styled(Link)`
     background-color: #f3f4f6;
     color: #374151;
   }
-  transition-property: background-color, border-color, color, fill, stroke,
-    opacity, box-shadow, transform;
-  transition-duration: 200ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
 `
 
 const IconHome = styled(Home)`
@@ -60,10 +56,6 @@ const SpanLink = styled.span`
   &:hover {
     color: black;
   }
-  transition-property: background-color, border-color, color, fill, stroke,
-    opacity, box-shadow, transform;
-  transition-duration: 200ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
 `
 
 const Header = () => (
