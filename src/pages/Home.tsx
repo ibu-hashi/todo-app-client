@@ -1,27 +1,30 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState} from 'react'
+import styled from 'styled-components'
 import TodoList from '../components/TodoList'
 import Header from '../components/Header'
-import {getTodos, Todo} from "../features/TodoApi";
+import {getTodos, Todo} from '../features/TodoApi'
+import {TodoContext} from '../context/todoContext'
 
-export const TodoContext = React.createContext<Todo[]>([])
-
+const Div = styled.div`
+  display: flex;
+`
 const Home = () => {
-    const [todos, setTodos] = useState<Todo[]>([])
+  const [todos, setTodos] = useState<Todo[]>([])
 
-    useEffect(() => {
-        getTodos().then((res) => {
-            setTodos(res)
-        })
-    }, [])
+  useEffect(() => {
+    getTodos().then((res) => {
+      setTodos(res)
+    })
+  }, [])
 
-    return(
-        <div>
-            <Header />
-            <TodoContext.Provider value={todos}>
-                <TodoList />
-            </TodoContext.Provider>
-        </div>
-    )
+  return (
+    <Div>
+      <Header />
+      <TodoContext.Provider value={todos}>
+        <TodoList />
+      </TodoContext.Provider>
+    </Div>
+  )
 }
 
 export default Home
