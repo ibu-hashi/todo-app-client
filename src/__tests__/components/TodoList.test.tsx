@@ -10,20 +10,25 @@ describe('TodoList.tsx Component', () => {
   })
 
   it('todoContextが空ならリストも空', () => {
-    todoContextMock.mockReturnValue([])
+    todoContextMock.mockReturnValue({
+      todos: []
+    })
+
     render(<TodoList />)
 
     expect(screen.getByRole('list').hasChildNodes()).toEqual(false)
   })
 
   it('todoContextがあればリストアイテムを表示', async () => {
-    todoContextMock.mockReturnValue([
-      {
-        id: 1,
-        title: 'title',
-        completed: false,
-      },
-    ])
+    todoContextMock.mockReturnValue({
+      todos: [
+        {
+          id: 1,
+          title: 'title',
+          completed: false
+        }
+      ]
+    })
 
     render(<TodoList />)
 

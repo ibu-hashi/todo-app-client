@@ -3,7 +3,6 @@ import {BrowserRouter} from 'react-router-dom'
 import NewTask from '../../pages/NewTask'
 
 describe('タスク作成画面', () => {
-
   afterEach(() => {
     cleanup()
   })

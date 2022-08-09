@@ -24,18 +24,4 @@ describe('Home画面', () => {
     await waitFor(() => expect(screen.queryByTestId('Header')).toBeTruthy())
     await waitFor(() => expect(screen.queryByTestId('TodoList')).toBeTruthy())
   })
-
-  it('ホーム画面の初期表示', async () => {
-    mock.onGet('/todos').reply(200, [
-      {
-        id: 1,
-        title: 'title',
-        completed: false,
-      },
-    ])
-    render(<Home />, {wrapper: BrowserRouter})
-
-    await waitFor(() => expect(mock.history.get[0].url).toEqual('/todos'))
-    await waitFor(() => expect(screen.getByText('title')).toBeInTheDocument())
-  })
 })

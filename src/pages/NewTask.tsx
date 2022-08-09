@@ -8,8 +8,8 @@ const Div = styled.div`
 
 const NewTask = () => (
   <Div data-testid="NewTask" className="flex">
-    <Header/>
-    <NewTaskForm/>
+    <Header />
+    <NewTaskForm />
   </Div>
 )
 
