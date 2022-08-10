@@ -1,11 +1,9 @@
-import styled from 'styled-components'
+import Home from "./pages/Home";
 
-const Div = styled.div`
-    color: red;
-`
-
-function App() {
-  return <Div>test</Div>
-}
+const App = () => (
+  <div className="App">
+    <Home />
+  </div>
+)
 
 export default App
