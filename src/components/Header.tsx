@@ -3,7 +3,7 @@ import styled from 'styled-components'
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
-  background-color: #10B981;
+  background-color: #10b981;
   padding: 1.5rem;
 `
 
@@ -15,9 +15,10 @@ const Title = styled.h1`
   letter-spacing: -0.025em;
 `
 
-const Header = () =>
-  <Wrapper data-testid='Header'>
+const Header = () => (
+  <Wrapper data-testid="Header">
     <Title>Todo App</Title>
   </Wrapper>
+)
 
 export default Header
