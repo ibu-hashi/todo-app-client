@@ -11,7 +11,7 @@ describe('TodoList.tsx Component', () => {
 
   it('todoContextが空ならリストも空', () => {
     todoContextMock.mockReturnValue({
-      todos: []
+      todos: [],
     })
 
     render(<TodoList />)
@@ -25,9 +25,9 @@ describe('TodoList.tsx Component', () => {
         {
           id: 1,
           title: 'title',
-          completed: false
-        }
-      ]
+          completed: false,
+        },
+      ],
     })
 
     render(<TodoList />)

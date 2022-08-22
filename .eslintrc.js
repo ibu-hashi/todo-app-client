@@ -49,6 +49,7 @@ module.exports = {
         namedComponents: 'arrow-function',
       },
     ],
+    "no-multi-assign": 'off'
   },
   settings: {
     'import/resolver': {

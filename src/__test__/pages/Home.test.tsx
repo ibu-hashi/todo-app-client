@@ -1,10 +1,10 @@
 import {cleanup, render, screen} from '@testing-library/react'
 import MockAdapter from 'axios-mock-adapter'
 import axios from 'axios'
-import Home from '../../pages/Home'
 import {act} from 'react-dom/test-utils'
-import TodoProvider from '../../context/TodoContext'
 import {BrowserRouter} from 'react-router-dom'
+import Home from '../../pages/Home'
+import TodoProvider from '../../context/TodoContext'
 
 describe('Home画面', () => {
   let mock: MockAdapter
@@ -34,12 +34,17 @@ describe('Home画面', () => {
       {
         id: 1,
         title: 'title',
-        completed: false
-      }
+        completed: false,
+      },
     ])
 
     await act(() => {
-      render(<TodoProvider><Home /></TodoProvider>, {wrapper: BrowserRouter})
+      render(
+        <TodoProvider>
+          <Home />
+        </TodoProvider>,
+        {wrapper: BrowserRouter}
+      )
     })
 
     expect(mock.history.get[0].url).toEqual('/todos')

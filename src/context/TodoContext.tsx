@@ -14,11 +14,9 @@ export const TodoContext = createContext<InitialState | null>(null)
 
 const TodoProvider: React.FC<Props> = ({children}) => {
   const [todos, setTodos] = useState<Todo[]>([])
-  const todosValue= useMemo(() => ({todos, setTodos}), [todos, setTodos]);
+  const todosValue = useMemo(() => ({todos, setTodos}), [todos, setTodos])
   return (
-    <TodoContext.Provider value={todosValue}>
-      {children}
-    </TodoContext.Provider>
+    <TodoContext.Provider value={todosValue}>{children}</TodoContext.Provider>
   )
 }
 
