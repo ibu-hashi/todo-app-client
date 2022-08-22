@@ -1,41 +1,41 @@
-// TodoList.test.tsx
 import {render, screen, waitFor} from '@testing-library/react'
+import React from 'react'
 import TodoList from '../../components/TodoList'
-import MockAdapter from "axios-mock-adapter";
-import axios from "axios";
 
 describe('TodoList.tsx Component', () => {
-  let mock: MockAdapter
+  let todoContextMock: jest.Mock
 
   beforeEach(() => {
-    mock = new MockAdapter(axios)
+    todoContextMock = React.useContext = jest.fn()
   })
 
-  afterEach(() => {
-    mock.reset()
-  })
-
-  it('getTodosの戻り値が空ならリストも空', () => {
-    mock.onGet('/todos').reply(200, [])
+  it('todoContextが空ならリストも空', () => {
+    todoContextMock.mockReturnValue({
+      todos: []
+    })
 
     render(<TodoList />)
 
     expect(screen.getByRole('list').hasChildNodes()).toEqual(false)
   })
 
-  it('getTodosの戻り値があればリストアイテムを表示', async () => {
-    mock.onGet('/todos').reply(200, [
-      {
-        id: 1,
-        title: 'title',
-        completed: false,
-      },
-    ])
+  it('todoContextがあればリストアイテムを表示', async () => {
+    todoContextMock.mockReturnValue({
+      todos: [
+        {
+          id: 1,
+          title: 'title',
+          completed: false
+        }
+      ]
+    })
 
-    await waitFor(()=>render(<TodoList />))
+    render(<TodoList />)
 
-    await waitFor(()=>expect(screen.getByRole('list').hasChildNodes()).toEqual(true))
+    expect(screen.getByRole('list').hasChildNodes()).toEqual(true)
 
-    await waitFor(() => expect(screen.getByRole('listitem').textContent).toEqual('title'))
+    await waitFor(() =>
+      expect(screen.getByRole('listitem').textContent).toEqual('title')
+    )
   })
 })

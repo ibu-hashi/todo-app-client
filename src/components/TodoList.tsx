@@ -1,20 +1,12 @@
-import React, {useEffect, useState} from 'react'
-import {getTodos, Todo} from '../features/TodoApi'
+import React from 'react'
+import {TodoContext} from '../context/TodoContext'
 
 const TodoList = () => {
-  const [todos, setTodos] = useState<Todo[]>([])
-
-  useEffect(() => {
-    /* eslint no-unused-expressions: "off" */
-    async () => {
-      const response = await getTodos()
-      setTodos(response)
-    }
-  }, [])
+  const todoContext = React.useContext(TodoContext)
 
   return (
     <ul data-testid='TodoList'>
-      {todos.map((todo) => (
+      {todoContext?.todos.map((todo) => (
         <li key={todo.id}>{todo.title}</li>
       ))}
     </ul>
