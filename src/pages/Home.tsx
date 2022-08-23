@@ -1,26 +1,17 @@
-import React, {useContext, useEffect} from 'react'
+import React from 'react'
+import styled from 'styled-components'
 import TodoList from '../components/TodoList'
 import Header from '../components/Header'
-import {getTodos} from '../features/TodoApi'
-import {TodoContext} from '../context/TodoContext'
 
-const Home = () => {
-  const todoContext = useContext(TodoContext)
+const Div = styled.div`
+  display: flex;
+`
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await getTodos()
-      todoContext?.setTodos(response)
-    }
-    fetchData()
-  }, [])
-
-  return (
-    <div>
-      <Header />
-      <TodoList />
-    </div>
-  )
-}
+const Home = () => (
+  <Div>
+    <Header />
+    <TodoList />
+  </Div>
+)
 
 export default Home
